@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>You Chose:
+
+        <span id="u-one">_</span>
+        <span id="u-two">_</span>
+        <span id="u-three">_</span>
+        <span id="u-four">_</span>
+        <span id="u-five">_</span>
+
+    </p>
+    <p>Computer Chose:
+        <span id="a-one"> _</span>
+        <span id="a-two">_</span>
+        <span id="a-three">_</span>
+        <span id="a-four">_</span>
+        <span id="a-five">_</span>
+    </p>
+    <p>Wins:
+        <span id="wins">0</span>
+    </p>
+    <p>Lives:
+        <span id="lives">5</span>
+    </p>
+    <script>
+        //get user letter    
+        var userChoiceElem = [
+            ulone= [document.getElementById("u-one")],
+            ultwo= [document.getElementById("u-two")],
+            ulthree= [document.getElementById("u-three")],
+            ulfour= [document.getElementById("u-four")],
+            ulfive= [document.getElementById("u-five")],
+        ]
+        //computer guess
+        var aiChoiceElem = [
+            alone= document.getElementById("a-one"),
+            altwo= document.getElementById("a-two"),
+            althree=document.getElementById("a-three"),
+            alfour= document.getElementById("a-four"),
+            alfive =document.getElementById("a-five"),
+        ]
+        var winsElem = document.getElementById("wins");
+        var livesElem = document.getElementById("lives");
+        var wins = 0;
+        var lives = 5;
+        var word = ["d", "r", "a", "k", "e"];
+        //logic 
+        document.onkeyup = function (event) {
+            var userInput = event.key;
+            var aiChoice = word;
+            if (userInput === aiChoice) {
+                wins++;
+            }
+
+
+            //display user guess per let
+            userChoiceElem.textContent = userInput;
+            aiChoiceElem.textContent = aiChoice;
+            winsElem.textContent = wins;
+            livesElem.textContent = lives;
+        }          
+    </script>
+</body>
+
+</html>
