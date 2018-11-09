@@ -17,11 +17,9 @@
 
     </p>
     <p>Computer Chose:
-        <span id="a-one"> _</span>
-        <span id="a-two">_</span>
-        <span id="a-three">_</span>
-        <span id="a-four">_</span>
-        <span id="a-five">_</span>
+        <span id="a-choice">_</span>
+
+
     </p>
     <p>Wins:
         <span id="wins">0</span>
@@ -31,82 +29,64 @@
     </p>
     <script>
         //get user letter and change da. instead of word its document get by    
-
+        //if letters same present final 
+        var guesses = []
+        var cguess=[]
+        var prompt = prompt("choose 5 letter")
+        var aiChoice = [prompt.split("")];
         var ulchoice = document.getElementById("u-choice");
 
+        var finalword = document.getElementById("a-choice");
 
-        //computer guess
-        var aiChoiceElem = {
-            alone: (document.getElementById("a-one")),
-            altwo: (document.getElementById("a-two")),
-            althree: (document.getElementById("a-three")),
-            alfour: (document.getElementById("a-four")),
-            alfive: (document.getElementById("a-five")),
-        }
         var winsElem = document.getElementById("wins");
         var livesElem = document.getElementById("lives");
         var wins = 0;
         var lives = 5;
 
+        var reset = function () {
+            if (lives == "0") {
 
-
+                wins = 0;
+                lives = 5;
+            }
+        }
+        //choose a word
+        //select letter
 
         document.onkeyup = function (event) {
+
             var userInput = event.key;
-            /* var userInput2 = event.key;
-             var userInput3 = event.key;
-             var userInput4 = event.key;
-             var userInput5 = event.key;*/
 
-            var guesses = []
-            var aiChoice = ["d", "r", "a", "k", "e"];
 
-            // prints nothing but sound good 
+
 
             winsElem.textContent = wins;
             livesElem.textContent = lives;
             //add userput to empty div
-            for (var i = 0; i < 5; i++) {
-                guesses.unshift(userInput);
+            for (var i = 0; i < 1; i++) {
+                guesses.push(userInput);
                 console.log(guesses[i]);
-
-                //what happens when guess are right
-                ulchoice.textContent = guesses[i];
-            }
-            if (guesses[0] === "d") {
-                aiChoiceElem.alone.textContent = "d";
-                alert("correct guess");
-                wins++;
-            }
-            else if (guesses[1] === "r") {
-                aiChoiceElem.altwo.textContent = "r";
-                alert("correct guess");
-                wins++
-            }
-            else if (guesses[2] === "a") {
-                aiChoiceElem.althree.textContent = "a";
-                alert("correct guess");
-                wins++
-            }
-            else if (guesses[3] === "k") {
-                aiChoiceElem.alfour.textContent = "k";
-                alert("correct guess");
-                wins++
-            }
-            else if (guesses[4] === "e") {
-                aiChoiceElem.alfive.textContent = "e";
-                alert("correct guess");
-                wins++
-            }
-            else {
-                alert("wrong guess");
-                lives--;
-            }
+                console.log(guesses)
 
 
-        }
+                ulchoice.textContent = guesses;
+            }
+            //what happens when guess are right letter by letter without repeating
+
+                    if (aiChoice[""]===userInput){
+  for (var i = 0; i < aiChoice.length; i++){
+      cguess.push(guesses)
+                     console.log(aiChoice);
+                  
+             finalword.textContent = aiChoice[i];   } 
+                     };
+                
 
 
+                reset();
+
+
+            }
 
 
 
