@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -16,8 +16,9 @@
 
 
     </p>
-    <p>Computer Chose:
-        <span id="a-choice">_</span>
+    <p>User Chose:
+        <span id="a-choice"> </span>
+        
 
 
     </p>
@@ -32,13 +33,20 @@
         //if letters same present final 
         var guesses = []
         var matches = [];
+        var realword=[]
         var prompt = prompt("choose 5 letter")
         var aiChoice = (prompt.split(""));
-        // var aiChoice = [prompt.split("")];
-        console.log(aiChoice)
         var ulchoice = document.getElementById("u-choice");
-
-        var finalword = document.getElementById("a-choice");
+    
+        console.log(aiChoice)
+        for (var i=0 ; i<aiChoice.length ; i++) {
+        var para = document.createElement("span");
+var node = document.createTextNode(" _ ");
+para.appendChild(node);
+var finalword = document.getElementById("a-choice");
+finalword.appendChild(para);}
+       
+       
 
         var winsElem = document.getElementById("wins");
         var livesElem = document.getElementById("lives");
@@ -51,9 +59,8 @@
                 wins = 0;
                 lives = 5;
             }
-        }
+        } 
         //choose a word
-        //select letter
 
         document.onkeyup = function (event) {
 
@@ -77,38 +84,40 @@
             // console.log( aiChoice)
 
             
-  getMatch(guesses, aiChoice);
+diff( );
+//diffonce( );
  
         console.log(matches);
-        matches.filter(getMatch);
-        finalword.textContent =matches;
+        console.log(realword);
+        
+       finalword.textContent =realword;
 
 
         }
-function getMatch(a, b) {
+    
+  //get correct guesses  
+  function diff() {
+for (var i=0 ; i<aiChoice.length ; i++) {  //NOW COMPARING EACH ELEMENT OF  newArray  WITH ARR1 AD ARR2 AND PUSHING NOT SAME VALUES TO newestArray
+    if (guesses.indexOf(aiChoice[i])!==-1 ) {
+       matches.push(guesses[i]);
+    } 
+    if(matches[i]===guesses[i]){
+         realword.push(matches[i])//Solution to my problem,I put this braces after the next if, because of that next if was not running.  
+}
+return matches; 
+}
+/* function diffonce( ){
+    for (var i=0 ; i<guesses.length ; i++)
+     if(matches[i]===guesses[i]){
+         realword.push(matches[i])
+     }*/
+ }
 
 
-                for (var i = 0; i < a.length; i++) {
-                    for (var e = 0; e < b.length; e++) {
-                        if (a[i] === b[e]){ matches.push(a[i]);
-                         wins++;
-                        }
-                    else { lives--}
-                    }
-                }
-            }
-         //   arr.foreach(function(num){ console.log(num)   }
+        
 
       
         reset();
-        
-
-
-
-
-
-
-
 
 
 
