@@ -33,7 +33,6 @@
         //if letters same present final 
         var guesses = []
         var matches = [];
-        var realword=[]
         var prompt = prompt("choose 5 letter")
         var aiChoice = (prompt.split(""));
         var ulchoice = document.getElementById("u-choice");
@@ -85,12 +84,10 @@ finalword.appendChild(para);}
 
             
 diff( );
-//diffonce( );
  
         console.log(matches);
-        console.log(realword);
         
-       finalword.textContent =realword;
+       finalword.textContent =matches;
 
 
         }
@@ -100,19 +97,11 @@ diff( );
 for (var i=0 ; i<aiChoice.length ; i++) {  //NOW COMPARING EACH ELEMENT OF  newArray  WITH ARR1 AD ARR2 AND PUSHING NOT SAME VALUES TO newestArray
     if (guesses.indexOf(aiChoice[i])!==-1 ) {
        matches.push(guesses[i]);
-    } 
-    if(matches[i]===guesses[i]){
-         realword.push(matches[i])//Solution to my problem,I put this braces after the next if, because of that next if was not running.  
+    }  //Solution to my problem,I put this braces after the next if, because of that next if was not running.  
 }
 return matches; 
 }
-/* function diffonce( ){
-    for (var i=0 ; i<guesses.length ; i++)
-     if(matches[i]===guesses[i]){
-         realword.push(matches[i])
-     }*/
- }
-
+  
 
         
 
