@@ -31,9 +31,11 @@
         //get user letter and change da. instead of word its document get by    
         //if letters same present final 
         var guesses = []
-        var cguess=[]
+        var matches = [];
         var prompt = prompt("choose 5 letter")
-        var aiChoice = [prompt.split("")];
+        var aiChoice = (prompt.split(""));
+        // var aiChoice = [prompt.split("")];
+        console.log(aiChoice)
         var ulchoice = document.getElementById("u-choice");
 
         var finalword = document.getElementById("a-choice");
@@ -63,32 +65,43 @@
             winsElem.textContent = wins;
             livesElem.textContent = lives;
             //add userput to empty div
-            for (var i = 0; i < 1; i++) {
-                guesses.push(userInput);
-                console.log(guesses[i]);
-                console.log(guesses)
+            // 
+            guesses.push(userInput);
+            console.log(guesses);
 
 
-                ulchoice.textContent = guesses;
-            }
+            //ulchoice.textContent = guesses;
+            ulchoice.textContent = guesses;
+
             //what happens when guess are right letter by letter without repeating
+            // console.log( aiChoice)
 
-                    if (aiChoice[""]===userInput){
-  for (var i = 0; i < aiChoice.length; i++){
-      cguess.push(guesses)
-                     console.log(aiChoice);
-                  
-             finalword.textContent = aiChoice[i];   } 
-                     };
-                
-
-
-                reset();
+            
+  getMatch(guesses, aiChoice);
+ 
+        console.log(matches);
+        matches.filter(getMatch);
+        finalword.textContent =matches;
 
 
+        }
+function getMatch(a, b) {
+
+
+                for (var i = 0; i < a.length; i++) {
+                    for (var e = 0; e < b.length; e++) {
+                        if (a[i] === b[e]){ matches.push(a[i]);
+                         wins++;
+                        }
+                    else { lives--}
+                    }
+                }
             }
+         //   arr.foreach(function(num){ console.log(num)   }
 
-
+      
+        reset();
+        
 
 
 
