@@ -59,13 +59,12 @@ reset();
     function diff(userInput) {
         var indicies = findAllOccuranceIndicies(userInput);
         for (var i = 0; i < indicies.length; i++) {
-
-            matches[indicies[i]] = userInput;
+            matches[indicies[i]] = userInput; 
         }
     }
 
     function reset() {
-        if (wins === aiChoice.length) {
+        if (matches == aiChoice) {
              wins = 0; 
              alert(" U won, Press Space To See the word ")
              alert(" The word was  "+ aiChoice)
