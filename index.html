@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,16 +18,15 @@
     </p>
     <p>User Chose:
         <span id="a-choice"> </span>
-        
+
 
 
     </p>
     <p>Wins:
         <span id="wins">0</span>
     </p>
-    <p>Lives:
-        <span id="lives">5</span>
-    </p>
+
+
     <script>
         //get user letter and change da. instead of word its document get by    
         //if letters same present final 
@@ -36,81 +35,84 @@
         var prompt = prompt("choose 5 letter")
         var aiChoice = (prompt.split(""));
         var ulchoice = document.getElementById("u-choice");
-    
+
         console.log(aiChoice)
-        for (var i=0 ; i<aiChoice.length ; i++) {
-        var para = document.createElement("span");
-var node = document.createTextNode(" _ ");
-para.appendChild(node);
-var finalword = document.getElementById("a-choice");
-finalword.appendChild(para);}
-       
-       
+        for (var i = 0; i < aiChoice.length; i++) {
+            var para = document.createElement("span");
+            var node = document.createTextNode(" _ ");
+            para.appendChild(node);
+            var finalword = document.getElementById("a-choice");
+            finalword.appendChild(para);
+        }
+
 
         var winsElem = document.getElementById("wins");
         var livesElem = document.getElementById("lives");
         var wins = 0;
-        var lives = 5;
 
-        var reset = function () {
-            if (lives == "0") {
 
-                wins = 0;
-                lives = 5;
-            }
-        } 
+
         //choose a word
-
         document.onkeyup = function (event) {
-
+            console.log("running")
             var userInput = event.key;
-
-
-
-
             winsElem.textContent = wins;
-            livesElem.textContent = lives;
+
             //add userput to empty div
             // 
             guesses.push(userInput);
-            console.log(guesses);
-
-
+            console.log("guesses", guesses);
             //ulchoice.textContent = guesses;
             ulchoice.textContent = guesses;
-
             //what happens when guess are right letter by letter without repeating
             // console.log( aiChoice)
 
-            
-diff( );
- 
-        console.log(matches);
-        
-       finalword.textContent =matches;
-
+            diff(userInput);
+reset();
+            console.log(matches);
+            finalword.textContent = matches;
 
         }
-    
-  //get correct guesses  
-  function diff() {
-for (var i=0 ; i<aiChoice.length ; i++) {  //NOW COMPARING EACH ELEMENT OF  newArray  WITH ARR1 AD ARR2 AND PUSHING NOT SAME VALUES TO newestArray
-    if (guesses.indexOf(aiChoice[i])!==-1 ) {
-       matches.push(guesses[i]);
-    }  //Solution to my problem,I put this braces after the next if, because of that next if was not running.  
-}
-return matches; 
-}
-  
 
-        
+        function findAllOccuranceIndicies(userInput) {
+            var indicies = [];
+            for (var i = 0; i < aiChoice.length; i++) {
+                if (userInput === aiChoice[i]) {
+                    indicies.push(i)
+                    wins++
+                }
 
-      
-        reset();
+            }
+            return indicies; 
+            
+        }
+        //get correct guesses  
+        function diff(userInput) {
+            var indicies = findAllOccuranceIndicies(userInput);
+            for (var i = 0; i < indicies.length; i++) {
+
+                matches[indicies[i]] = userInput;
+            }
+        }
+
+        function reset(userInput) {
+            if (matches === aiChoice[i]) {
+                alert(" u won")
+                wins = 0;
+            }
+          
+        }
+ 
+
+
 
 
 
     </script>
+
+
+
+
 </body>
 
-</html>
+</html> 
