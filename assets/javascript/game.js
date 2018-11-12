@@ -68,6 +68,7 @@ reset();
         if (wins === aiChoice.length) {
              wins = 0; 
              alert(" U won, Press Space To See the word ")
+             alert(" The word was  "+ aiChoice)
              location.reload();
         }
     }
